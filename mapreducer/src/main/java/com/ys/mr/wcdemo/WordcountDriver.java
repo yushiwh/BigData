@@ -22,15 +22,15 @@ public class WordcountDriver {
 
         if (args == null || args.length == 0) {
             args = new String[2];
-            args[0] = "hdfs://mini130:9000/wordcount/input/wordcount.txt";
-            args[1] = "hdfs://mini130:9000/wordcount/output8";
+            args[0] = "hdfs://192.168.162.130:9000/wordcount/input/a.txt";
+            args[1] = "hdfs://192.168.162.130:9000/wordcount/output8";
         }
 
         Configuration conf = new Configuration();
 
         //设置的没有用!  ??????
-//		conf.set("HADOOP_USER_NAME", "hadoop");
-//		conf.set("dfs.permissions.enabled", "false");
+        //conf.set("HADOOP_USER_NAME", "hadoop");
+        //conf.set("dfs.permissions.enabled", "false");
 
 		
 		/*conf.set("mapreduce.framework.name", "yarn");
