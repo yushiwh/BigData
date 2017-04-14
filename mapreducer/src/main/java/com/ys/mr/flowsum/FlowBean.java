@@ -1,27 +1,37 @@
 package com.ys.mr.flowsum;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class FlowBean implements Writable{
-	
+
+public class FlowBean implements WritableComparable<FlowBean> {
+
 	private long upFlow;
 	private long dFlow;
 	private long sumFlow;
-	
+
 	//反序列化时，需要反射调用空参构造函数，所以要显示定义一个
 	public FlowBean(){}
-	
+
 	public FlowBean(long upFlow, long dFlow) {
 		this.upFlow = upFlow;
 		this.dFlow = dFlow;
 		this.sumFlow = upFlow + dFlow;
 	}
-	
-	
+
+
+	public void set(long upFlow, long dFlow) {
+		this.upFlow = upFlow;
+		this.dFlow = dFlow;
+		this.sumFlow = upFlow + dFlow;
+	}
+
+
+
+
 	public long getUpFlow() {
 		return upFlow;
 	}
@@ -54,7 +64,7 @@ public class FlowBean implements Writable{
 		out.writeLong(upFlow);
 		out.writeLong(dFlow);
 		out.writeLong(sumFlow);
-		
+
 	}
 
 
@@ -64,15 +74,20 @@ public class FlowBean implements Writable{
 	 */
 	@Override
 	public void readFields(DataInput in) throws IOException {
-		 upFlow = in.readLong();
-		 dFlow = in.readLong();
-		 sumFlow = in.readLong();
+		upFlow = in.readLong();
+		dFlow = in.readLong();
+		sumFlow = in.readLong();
 	}
-	
+
 	@Override
 	public String toString() {
-		 
+
 		return upFlow + "\t" + dFlow + "\t" + sumFlow;
+	}
+
+	@Override
+	public int compareTo(FlowBean o) {
+		return this.sumFlow>o.getSumFlow()?-1:1;	//从大到小, 当前对象和要比较的对象比, 如果当前对象大, 返回-1, 交换他们的位置(自己的理解)
 	}
 
 }
