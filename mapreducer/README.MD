@@ -55,3 +55,23 @@ P0001	小米5	1001	2
 P0002	锤子T1	1000	3
 P0003	锤子	1002	4
 
+
+-------------分词倒序排列
+hello world
+hello tom
+hello yushi
+
+
+hello qwer
+hello sdfg
+hello xcvb
+
+
+hello uiop
+hello s
+hello cc
+
+
+
+
+
