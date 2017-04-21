@@ -23,7 +23,11 @@ public class WordcountDriver {
         if (args == null || args.length == 0) {
             args = new String[2];
             args[0] = "hdfs://192.168.162.130:9000/wordcount/input/a.txt";
-            args[1] = "hdfs://192.168.162.130:9000/wordcount/output8";
+            //args[1] = "hdfs://192.168.162.130:9000/wordcount/output8";
+
+           // args[0] = "e:/a.txt";
+            args[1] = "e:/out.log";
+
         }
 
         Configuration conf = new Configuration();
@@ -32,9 +36,10 @@ public class WordcountDriver {
         //conf.set("HADOOP_USER_NAME", "hadoop");
         //conf.set("dfs.permissions.enabled", "false");
 
-		
-		/*conf.set("mapreduce.framework.name", "yarn");
-        conf.set("yarn.resoucemanager.hostname", "mini1");*/
+
+
+        //conf.set("mapreduce.framework.name", "yarn");
+        //conf.set("yarn.resoucemanager.hostname", "mini1");
         Job job = Job.getInstance(conf);
 		
 		/*job.setJar("/home/hadoop/wc.jar");*/

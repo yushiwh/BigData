@@ -20,10 +20,10 @@ public class FlowCount {
 			 
 			String line = value.toString();	//将一行内容转成string
 			String[] fields = line.split("\t");	//切分字段
-			String phoneNbr = fields[1];	//取出手机号
+			String phoneNbr = fields[0];	//取出手机号
 			
-			long upFlow = Long.parseLong(fields[fields.length-3]);	//取出上行流量下行流量
-			long dFlow = Long.parseLong(fields[fields.length-2]);
+			long upFlow = Long.parseLong(fields[0].substring(0,3));	//取出上行流量下行流量
+			long dFlow = Long.parseLong(fields[0].substring(0,3));
 			
 			context.write(new Text(phoneNbr), new FlowBean(upFlow, dFlow));
 		}
@@ -52,6 +52,13 @@ public class FlowCount {
 	
 	
 	public static void main(String[] args) throws Exception {
+
+		if (args == null || args.length == 0) {
+			args = new String[2];
+			args[0] = "hdfs://192.168.162.130:9000/wordcount/tel.log";
+			args[1] = "hdfs://192.168.162.130:9000/wordcount/tel4";
+		}
+
 		Configuration conf = new Configuration();
 		/*conf.set("mapreduce.framework.name", "yarn");
 		conf.set("yarn.resoucemanager.hostname", "mini1");*/
