@@ -14,6 +14,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
  * 需要在此封装我们的mr程序的相关运行参数，指定jar包
  * 最后提交给yarn
  *
+ * 统计单词出现次数
+ *
  * @author
  */
 public class WordcountDriver {

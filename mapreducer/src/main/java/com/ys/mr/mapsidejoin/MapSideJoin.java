@@ -19,6 +19,9 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 增加map边进行处理数据联合，这样能够防止数据的倾斜
+ */
 public class MapSideJoin {
 
 	public static class MapSideJoinMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
