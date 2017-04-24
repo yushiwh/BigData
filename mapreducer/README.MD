@@ -71,6 +71,36 @@ hello uiop
 hello s
 hello cc
 
+----寻找共同的QQ好友
+社交粉丝数据分析
+以下是qq的好友列表数据，冒号前是一个用，冒号后是该用户的所有好友（数据中的好友关系是单向的）
+A:B,C,D,F,E,O
+B:A,C,E,K
+C:F,A,D,I
+D:A,E,F,L
+E:B,C,D,M,L
+F:A,B,C,D,E,O,M
+G:A,C,D,E,F
+H:A,C,D,E,O
+I:A,O
+J:B,O
+K:A,C,D
+L:D,E,F
+M:E,F,G
+O:A,H,I,J
+
+求出哪些人两两之间有共同好友，及他俩的共同好友都有谁？
+
+
+
+-----清洗日志文件
+
+
+
+
+
+--注：所需要的例子文件都在file中
+
 
 
 
