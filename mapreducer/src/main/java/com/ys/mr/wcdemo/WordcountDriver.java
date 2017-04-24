@@ -28,11 +28,28 @@ public class WordcountDriver {
             //args[1] = "hdfs://192.168.162.130:9000/wordcount/output8";
 
            // args[0] = "e:/a.txt";
-            args[1] = "e:/out.log";
+          //  args[1] = "e:/out.log";
+
+            args[1] =  "file:///e:\\out.log";
 
         }
 
         Configuration conf = new Configuration();
+
+        /**
+         * 连接hadoop集群配置
+         */
+
+        conf.set("fs.default.name", "hdfs://192.168.162.130:9000");
+        conf.set("hadoop.job.user", "hadoop");
+        conf.set("mapreduce.framework.name", "yarn");
+        conf.set("mapreduce.jobtracker.address", "192.168.162.130:9001");
+        conf.set("yarn.resourcemanager.hostname", "192.168.162.130");
+        conf.set("yarn.resourcemanager.admin.address", "192.168.162.130:8033");
+        conf.set("yarn.resourcemanager.address", "192.168.162.130:8032");
+        conf.set("yarn.resourcemanager.resource-tracker.address", "192.168.162.130:8036");
+        conf.set("yarn.resourcemanager.scheduler.address", "192.168.162.130:8030");
+
 
         //设置的没有用!  ??????
         //conf.set("HADOOP_USER_NAME", "hadoop");
