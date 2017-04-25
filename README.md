@@ -1,0 +1,3 @@
+# BigData
+大数据的一些基本列子
+mapreducer项目中解决了windows中的eclipse调用yarn集群出现的各种错误，能够设置ReducerTask进行分区计算
