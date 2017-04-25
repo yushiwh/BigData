@@ -2,6 +2,7 @@ package com.ys.mr.groupingcomparator;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -24,8 +25,6 @@ import java.io.IOException;
  */
 public class SecondarySort {
 
-    public static String path1 = "file:///E:\\wordcount\\compare"; //file:///代表本地文件系统中路径的意思
-    public static String path2 = "file:///e:\\wordcount\\compare\\out";
 
     static class SecondarySortMapper extends Mapper<LongWritable, Text, OrderBean, NullWritable> {
 
@@ -58,21 +57,25 @@ public class SecondarySort {
 
     public static void main(String[] args) throws Exception {
 
+        String path1 = "file:///E:\\wordcount\\compare"; //file:///代表本地文件系统中路径的意思
+        String path2 = "file:///e:\\wordcount\\compare\\out";
 
-        Configuration conf = new Configuration();
-
-        Job job = Job.getInstance(conf);
+        Job job = Job.getInstance();
+        Configuration conf = job.getConfiguration();
         job.setJobName("yushi");
+
         job.setJarByClass(SecondarySort.class);
-
-
-
         job.setMapperClass(SecondarySortMapper.class);
         job.setReducerClass(SecondarySortReducer.class);
 
 
         job.setOutputKeyClass(OrderBean.class);
         job.setOutputValueClass(NullWritable.class);
+
+        //删除输出的文件夹
+        FileSystem fs = FileSystem.get(conf);
+        Path output = new Path(path2);
+        fs.delete(output, true);
 
         FileInputFormat.setInputPaths(job, new Path(path1));
         FileOutputFormat.setOutputPath(job, new Path(path2));
