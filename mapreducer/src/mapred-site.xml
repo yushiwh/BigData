@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>mapred.remote.os</name>
+        <value>Linux</value>
+    </property>
+    <property>
+        <name>mapreduce.app-submission.cross-platform</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>
+            /hadoop-2.7.3/etc/hadoop,
+            /hadoop-2.7.3/share/hadoop/common/*,
+            /hadoop-2.7.3/share/hadoop/common/lib/*,
+            /hadoop-2.7.3/share/hadoop/hdfs/*,
+            /hadoop-2.7.3/share/hadoop/hdfs/lib/*,
+            /hadoop-2.7.3/share/hadoop/mapreduce/*,
+            /hadoop-2.7.3/share/hadoop/mapreduce/lib/*,
+            /hadoop-2.7.3/share/hadoop/yarn/*,
+            /hadoop-2.7.3/share/hadoop/yarn/lib/*
+        </value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>mini130:10020</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>mini130:19888</value>
+    </property>
+</configuration>

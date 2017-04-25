@@ -111,6 +111,26 @@ Order_0000003	Pdt_01	222.8
 --注：所需要的例子文件都在file中
 
 
+--------一个痛苦的解决问题的过程--------------------------------------
+--------------搞定一个问题----
+windows里面的eclipse访问linux的yarn集群会出现的错误
+1、权限问题
+   没有linux的权限，需要在启动的配置参数中加上指定的用户，如在debug的配置中：HADOOP_USER_NAME=hadoop
 
+2、/bin/bash: line 0: fg: no job control一般解决方法
+   这个问题是hadoop的bug
+   具体可见http://blog.csdn.net/fansy1990/article/details/27526167
+   需要重新写YARNRunner.java,具体的本项目中已有
+
+3、出现Stack trace: ExitCodeException exitCode=1:
+http://www.cnblogs.com/gaoxing/p/4466924.html
+   要把配置的四个文件放到src目录下面
+   core-site.xml
+   hdfs-site.xml
+   mapred-site.xml
+   yarn-site.xml
+   注意如果要使用如 mini130 这样的，需要在hosts中进行配置
+   yarn.application.classpath
+   mapreduce.application.classpath都需要编写绝对地址
 
 

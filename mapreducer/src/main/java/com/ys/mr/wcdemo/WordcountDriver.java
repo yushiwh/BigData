@@ -36,29 +36,6 @@ public class WordcountDriver {
 
         Configuration conf = new Configuration();
 
-        /**
-         * 连接hadoop集群配置
-         */
-
-        conf.set("fs.default.name", "hdfs://192.168.162.130:9000");
-        conf.set("hadoop.job.user", "hadoop");
-        conf.set("mapreduce.framework.name", "yarn");
-        conf.set("mapreduce.jobtracker.address", "192.168.162.130:9001");
-        conf.set("yarn.resourcemanager.hostname", "192.168.162.130");
-        conf.set("yarn.resourcemanager.admin.address", "192.168.162.130:8033");
-        conf.set("yarn.resourcemanager.address", "192.168.162.130:8032");
-        conf.set("yarn.resourcemanager.resource-tracker.address", "192.168.162.130:8036");
-        conf.set("yarn.resourcemanager.scheduler.address", "192.168.162.130:8030");
-
-
-        //设置的没有用!  ??????
-        //conf.set("HADOOP_USER_NAME", "hadoop");
-        //conf.set("dfs.permissions.enabled", "false");
-
-
-
-        //conf.set("mapreduce.framework.name", "yarn");
-        //conf.set("yarn.resoucemanager.hostname", "mini1");
         Job job = Job.getInstance(conf);
 		
 		/*job.setJar("/home/hadoop/wc.jar");*/
@@ -80,6 +57,9 @@ public class WordcountDriver {
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         //指定job的输出结果所在目录
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        job.setNumReduceTasks(3);//设置ReduceTasks的数量
+
 
         //将job中配置的相关参数，以及job所用的java类所在的jar包，提交给yarn去运行
 		/*job.submit();*/
