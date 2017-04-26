@@ -134,3 +134,7 @@ http://www.cnblogs.com/gaoxing/p/4466924.html
    mapreduce.application.classpath都需要编写绝对地址
 
 
+
+
+-----------------------从日志文件中获取用户的访问的url，然后进行匹配sql中对应的url的数据
+日志文件url-log-1里面
