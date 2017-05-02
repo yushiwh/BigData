@@ -24,6 +24,7 @@ public class SharedFriendsStepOne {
 			// A:B,C,D,F,E,O
 			String line = value.toString();
 			String[] person_friends = line.split(":");
+			line.split("");
 			String person = person_friends[0];
 			String friends = person_friends[1];
 

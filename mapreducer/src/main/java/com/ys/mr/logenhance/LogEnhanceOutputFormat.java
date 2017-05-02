@@ -24,8 +24,14 @@ public class LogEnhanceOutputFormat extends FileOutputFormat<Text, NullWritable>
 
         FileSystem fs = FileSystem.get(context.getConfiguration());
 
+        //写在本地
         String enhance = "e:/temp/en/log.dat";
         String tocrawl = "e:/temp/crw/url.dat";
+
+        //写在hdfs中
+        //String enhance ="hdfs://192.168.162.130:9000/logEnhance/input/log.dat";
+        //String tocrawl = "hdfs://192.168.162.130:9000/logEnhance/output/url.dat";
+
 
         //删除输出的文件夹
         Path enhanceoutput = new Path(enhance);
